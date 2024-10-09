@@ -1,3 +1,7 @@
 .time{
     height: 25vb;
+    font-size: xx-large;
+    padding-top: 3%;
+    background-color: rgb(105, 96, 96);
+    color: white;
 }
