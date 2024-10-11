@@ -1,9 +1,10 @@
 
 let alarmSound = new Audio('/sound/alarmSound.wav')
 
-let a ;
-let localTime ;
+let a ; //setInterval id to stop it 
+let localTime ; 
 
+//to get the alarm time from the form
 const getValues = () =>{
     let sl = document.querySelectorAll('select')
     let hour = sl[0].value
@@ -12,11 +13,13 @@ const getValues = () =>{
     return hour + ':' + min + ' ' + am_pm
 }
 
+//button objects dom
 let btn = document.querySelectorAll('.btn')
 let delete_alarm = btn[0]
 let stop_alarm = btn[1]
 let set_alarm = btn[2]
 
+//after setinng the alarm it will check and match alarmTime == local time after each 10 sec.
 set_alarm.addEventListener('click', function(){
     let alarmTime = getValues()
     a = setInterval(()=>{
@@ -25,9 +28,10 @@ set_alarm.addEventListener('click', function(){
         if (alarmTime == localTime){
             alarmSound.play()
         }
-    },1000)
+    },10000)
 })
 
+//pause the audio and clear the setInterval
 stop_alarm.onclick = ()=>{
     alarmSound.pause()
     clearInterval(a)
